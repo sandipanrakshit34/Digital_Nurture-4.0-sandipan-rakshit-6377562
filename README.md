@@ -1,1 +1,5 @@
-# Digital_Nurture-4.0-sandipan-rakshit-6377562
+## Digital Nurture Program 4.0 Java FSE Weekly Submissions
+
+### Name : Sandipan Rakshit
+### SuperSet ID : 6377562
+### Email : sandipanrakshit6@gmail.com
