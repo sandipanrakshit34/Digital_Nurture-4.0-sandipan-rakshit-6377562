@@ -1,0 +1,43 @@
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE ADDNEWCUSTOMER(
+    P_CUSTOMER_ID IN CUSTOMERS.CUSTOMERID%TYPE,
+    P_NAME IN CUSTOMERS.NAME%TYPE,
+    P_DOB IN DATE,
+    P_BALANCE IN CUSTOMERS.BALANCE%TYPE
+) AS
+BEGIN
+    -- Attempt to insert the new customer
+    DBMS_OUTPUT.PUT_LINE('INSERTING...');
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER_ID : ' || P_CUSTOMER_ID);
+    DBMS_OUTPUT.PUT_LINE('NAME : ' || P_NAME);
+    DBMS_OUTPUT.PUT_LINE('DOB : ' || P_DOB);
+    DBMS_OUTPUT.PUT_LINE('BALANCE : ' || P_BALANCE);
+    
+    INSERT INTO CUSTOMERS (CUSTOMERID, NAME, DOB, BALANCE, LASTMODIFIED)
+    VALUES (P_CUSTOMER_ID, P_NAME, P_DOB, P_BALANCE, SYSDATE);
+    
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Customer added successfully.');
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Customer ID ' || P_CUSTOMER_ID || ' already exists.');
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Customer addition failed: ' || SQLERRM);
+END ADDNEWCUSTOMER;
+/
+
+DECLARE
+	cust_id CUSTOMERS.CUSTOMERID%TYPE;
+	cust_name CUSTOMERS.NAME%TYPE;
+	cust_dob DATE;
+	balance CUSTOMERS.BALANCE%TYPE;
+BEGIN
+	cust_id:=&customer_id;
+	cust_name:='&customer_name';
+	cust_dob:=TO_DATE('&date_of_birth', 'YYYY-MM-DD');
+	balance:=&balance;
+	ADDNEWCUSTOMER(cust_id,cust_name,cust_dob,balance);
+END;
+/

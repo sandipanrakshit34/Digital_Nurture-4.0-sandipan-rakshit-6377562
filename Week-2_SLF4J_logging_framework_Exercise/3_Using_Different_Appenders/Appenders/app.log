@@ -1,0 +1,8 @@
+14:43:13.848 [main] INFO  org.code.MultiAppender - This is INFO log message
+14:43:13.851 [main] DEBUG org.code.MultiAppender - This is DEBUG message
+14:43:13.851 [main] WARN  org.code.MultiAppender - This is WARNING message
+14:43:13.851 [main] ERROR org.code.MultiAppender - This is ERROR message
+22:26:35.099 [main] INFO  org.code.MultiAppender - This is INFO log message
+22:26:35.104 [main] DEBUG org.code.MultiAppender - This is DEBUG message
+22:26:35.104 [main] WARN  org.code.MultiAppender - This is WARNING message
+22:26:35.105 [main] ERROR org.code.MultiAppender - This is ERROR message
