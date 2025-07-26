@@ -1,0 +1,13 @@
+.mydiv {
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
